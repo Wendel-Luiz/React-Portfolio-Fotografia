@@ -1,0 +1,58 @@
+@import "./Variables";
+
+.menu-btn {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  margin: 1rem;
+  height: $menu-size;
+  width: $menu-size;
+  border: none;
+  border-top: $menu-border;
+  background-color: rgba(255, 255, 255, 0);
+  z-index: 100;
+  user-select: none;
+  cursor: pointer;
+  transition: $menu-transitions;
+
+  &:active {
+    background-color: rgba(255, 255, 255, 0); // ARRUMAR
+  }
+  &:focus {
+    outline: none;
+  }
+
+  &::after,
+  &::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    width: $menu-size;
+    transition: $menu-transitions;
+  }
+
+  &::after {
+    bottom: $menu-size * 0.5 - $menu-thickness * 0.5;
+    border-top: $menu-border;
+  }
+  &::before {
+    bottom: 0;
+    border-bottom: $menu-border;
+  }
+}
+
+.menu-active {
+  width: $menu-active-size;
+  border-top: $menu-borde-active;
+  transform: rotateZ(45deg);
+  margin: 2rem;
+
+  &::before,
+  &::after {
+    bottom: 100%;
+    width: $menu-active-size;
+    border-top: $menu-borde-active;
+    transform: rotateZ(-90deg);
+  }
+}
