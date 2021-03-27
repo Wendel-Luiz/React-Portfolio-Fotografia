@@ -1,9 +1,6 @@
 $menu-size: 2rem;
-$menu-thickness: 0.3rem;
-$menu-border: $menu-thickness solid rgb(0, 0, 0);
+$menu-thickness: 0.25rem;
 
-$menu-color: white;
-$menu-active-size: 1.75 * $menu-size;
-$menu-borde-active: $menu-thickness solid rgb(255, 255, 255);
-$menu-transitions: transform 200ms ease, width 200ms ease, margin 350ms ease,
-  color 350ms ease;
+$menu-color-main: rgb(0, 0, 0);
+$menu-color-back: rgb(255, 255, 255);
+$menu-transitions: transform 200ms ease, opacity 200ms ease, color 200ms ease;

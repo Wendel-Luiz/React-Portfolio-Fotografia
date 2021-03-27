@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.scss';
+//import './App.scss';
 
 import {
     Route,
@@ -14,20 +14,26 @@ export default function App(){
         <>
             <Navbar />
             <Switch>   
-                {/* <Route path='/About'>
-                    <H1 name="About"/>
+                <Route path='/Sobre'>
+                    <h1>Sobre</h1>
                 </Route>  
                 <Route path='/Contato'>
-                    <H1 name="Contato"/>
+                    <h1>Contato</h1>
                 </Route>   
+                <Route exact path='/Ensaios'>
+                    <h1>Ensaios</h1>
+                </Route>
+                <Route exact path='/Blog'>
+                    <h1>Blog</h1>
+                </Route>
                 <Route exact path='/'>
-                    <H1 name="Home"/>
+                    <h1>Home</h1>
                 </Route>  
                 <Route exact path='*'>
-                    <H1 name="Not Found"/>
-                </Route>  */}
+                    <h1>404</h1>
+                </Route> 
             </Switch>
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 }
