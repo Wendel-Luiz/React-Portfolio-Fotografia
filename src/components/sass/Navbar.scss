@@ -1,51 +1,125 @@
-.navbar {
-  position: fixed;
+.navbar-container {
+  position: sticky;
+  left: 0;
   top: 0;
-  right: 0;
-  width: 100%;
-  overflow-y: auto;
 
-  transition: opacity 200ms ease;
-  opacity: 0;
-}
-
-.active {
-  opacity: 1;
-}
-
-ul {
-  list-style: none;
+  padding: 0.25rem 0;
   margin: 0;
-  padding: 0;
 
-  background-color: rgb(65, 152, 223);
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: white;
+
+  .logo {
+    height: 3rem;
+    text-align: center;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .current-page {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+      margin: 0.5em;
+      padding: 0.125em 1em;
+      color: white;
+      background-color: rgba(226, 25, 166, 0.5);
+      border: none;
+      border-radius: 0.5em;
+    }
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    transition: opacity 200ms ease;
+    display: none;
+    z-index: 10;
+    opacity: 0;
+
+    animation-name: toggle;
+    animation-duration: 250ms;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        padding: 0.5em;
+        font-size: 1.25rem;
+        cursor: pointer;
+        a {
+          text-decoration: none;
+        }
+      }
+
+      li,
+      a {
+        color: rgb(136, 0, 68);
+      }
+    }
+  }
+
+  .active {
+    display: block;
+    z-index: 10;
+    opacity: 1;
+  }
+
+  .sub-list > ul {
+    display: none;
+    padding: 1rem;
+
+    li,
+    a {
+      color: rgb(43, 0, 21);
+    }
+
+    li {
+      font-size: 0.8em;
+    }
+  }
+
+  .show > ul {
+    display: block;
+    animation-name: toggle;
+    animation-duration: 500ms;
+  }
+
+  a,
+  li,
+  div {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
-li,
-a {
-  text-decoration: none;
-  color: black;
-  font-size: 1.6rem;
-  padding: 1rem 0.5rem;
-  cursor: pointer;
-}
-
-.sub-list {
-  color: red;
-}
-
-.sub-list > ul {
-  display: none;
-  opacity: 0;
-  top: 1rem;
-}
-
-li:hover > a {
-  color: white;
-}
-
-.sub-list:hover > ul {
-  display: block;
-  opacity: 1;
+@keyframes toggle {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

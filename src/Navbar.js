@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from'react-router-dom';
+import { Link, useLocation } from'react-router-dom';
 
 import "./components/sass/Navbar.scss";
 
@@ -7,23 +7,38 @@ import {items} from './data/navbar.json';
 import Hamburger from './components/Hamburger';
 
 export default function Navbar(props){
-    const [active, setActive] = useState(['active', '']);
+    const [menuActive, setMenuActive] = useState(['inactive', '']);
 
     const buttonOnclick = () => {
-        console.log("A")
-        if(active[0] === 'active')
-            setActive(['inactive', ''])
+        if(menuActive[0] === 'active')
+            setMenuActive(['inactive', ''])
         else
-            setActive(['active', 'menu-active'])
+            setMenuActive(['active', 'menu-active'])
+    }
+
+    const toggleSubMenu = (event) => {
+        if(!event.target.className.includes('sub-list')) return;
+
+        event.target.className = event.target.className.includes('show') ? 'sub-list' : 'sub-list show';
+    }
+
+    const clickLink = () => {
+        setMenuActive(['inactive', '']);
     }
     
 
     return (
         <div className="navbar-container">
-            <div className="navbar-menu">
-                <Hamburger classe={active[1]} onClick={buttonOnclick} />
+            <div className="logo">
+                <img src={process.env.PUBLIC_URL + '/logo.png'}></img>
             </div>
-            <div className={'navbar ' + active[0]}>
+            <div className="current-page">
+                <h3>{useLocation().pathname.substr(1)}</h3>
+            </div>
+            <div className="navbar-menu">
+                <Hamburger classe={menuActive[1]} onClick={buttonOnclick} />
+            </div>
+            <div className={'navbar ' + menuActive[0]}>
                 <List elements={items} active={true}/>
             </div>
         </div>
@@ -34,12 +49,14 @@ export default function Navbar(props){
             <ul>
                 {elements.map(item => (
                     item.subMenu ? 
-                        <li key={item.name} className='sub-list'>
+                        <li key={item.name} className='sub-list' onClick={(event) => toggleSubMenu(event)}>
                             {item.name}
                             <List elements={item.subMenu} active={false}/>
-                        </li> :
+                        </li> 
+
+                        :
                          
-                        <li key={item.name}> <Link to={item.link}> {item.name} </Link> </li>
+                        <li key={item.name}> <Link to={item.link} onClick={clickLink}> {item.name} </Link> </li>
                 ))}
             </ul>  
         )

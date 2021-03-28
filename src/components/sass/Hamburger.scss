@@ -1,14 +1,12 @@
 @import "./Variables";
 
 .menu-btn-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  margin: 0.5rem;
+  position: relative;
+  margin-right: 0.25rem;
   height: 2 * $menu-size;
   width: 2 * $menu-size;
 
-  border-radius: 50%;
+  border-radius: 10%;
 
   cursor: pointer;
   user-select: none;
@@ -18,11 +16,11 @@
   justify-content: center;
   align-items: center;
 
-  background-color: $menu-color-back;
+  background-color: $menu-color-main;
 }
 
 .menu-btn {
-  background-color: $menu-color-main;
+  background-color: $menu-color-back;
   width: $menu-size;
   height: $menu-thickness;
 
@@ -36,7 +34,7 @@
     width: $menu-size;
     height: $menu-thickness;
 
-    background-color: $menu-color-main;
+    background-color: $menu-color-back;
 
     transition: $menu-transitions;
   }
